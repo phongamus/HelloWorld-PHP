@@ -38,11 +38,9 @@ function processCode()
 function parseAuthRedirectUrl($url)
 {
     parse_str($url,$qsArray);
-    $realmId = $qsArray['realmId'];
-    $_SESSION['realmId'] = $realmId;
     return array(
         'code' => $qsArray['code'],
-        'realmId' => $realmId,
+        'realmId' => $qsArray['realmId'],
     );
 }
 
