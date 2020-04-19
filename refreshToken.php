@@ -21,7 +21,7 @@ function refreshToken()
         'RedirectURI' => $config['oauth_redirect_uri'],
         'baseUrl' => "development",
         'refreshTokenKey' => $accessToken->getRefreshToken(),
-        'QBORealmID' => $_SESSION['realmId'],
+        'QBORealmID' => $accessToken->getRealmID(),
     ));
 
     /*
@@ -33,10 +33,11 @@ function refreshToken()
 
     $_SESSION['sessionAccessToken'] = $refreshedAccessTokenObj;
 
-    print_r($refreshedAccessTokenObj->getRefreshTokenExpiresAt());
+    print_r($refreshedAccessTokenObj);
     return $refreshedAccessTokenObj;
 }
 
 $result = refreshToken();
+
 
 ?>
