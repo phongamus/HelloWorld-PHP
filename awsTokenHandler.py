@@ -59,7 +59,7 @@ def checkValidJson(messageJsonAsDict, checklist):
         print('All items Found')
         return True
 
-
+# Do this if running locally
 if __name__ == "__main__":
     with open('samplePostToDb.json') as f:
         awsJsonBody = json.load(f)
