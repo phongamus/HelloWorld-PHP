@@ -20,6 +20,8 @@ $OAuth2LoginHelper = $dataService->getOAuth2LoginHelper();
 $authUrl = $OAuth2LoginHelper->getAuthorizationCodeURL();
 
 
+
+
 // Store the url in PHP Session Object;
 $_SESSION['authUrl'] = $authUrl;
 
@@ -105,6 +107,15 @@ if (isset($_SESSION['sessionAccessToken'])) {
                     $( '#refreshToken' ).html( msg );
                 });
             }
+
+            this.postToDb = function() {
+                $.ajax({
+                    type: "POST",
+                    url: "postToDb.php",
+                }).done(function( msg ) {
+                    $( '#postToDb' ).html( msg );
+                });
+            }
         }
 
         var oauth = new OAuthCode(url);
@@ -136,7 +147,8 @@ if (isset($_SESSION['sessionAccessToken'])) {
     <p>If there is no access token or the access token is invalid, click the <b>Connect to QuickBooks</b> button below.</p>
     <pre id="accessToken">
         <style="background-color:#efefef;overflow-x:scroll"><?php
-    $displayString = isset($accessTokenJson) ? $accessTokenJson : "No Access Token Generated Yet";
+    // $displayString = isset($accessTokenJson) ? $accessTokenJson : "No Access Token Generated Yet";
+    $displayString = isset($accessTokenJson) ? print_r($_SESSION['sessionAccessToken']) : "No Access Token Generated Yet";
     echo json_encode($displayString, JSON_PRETTY_PRINT); ?>
     </pre>
     <a class="imgLink" href="#" onclick="oauth.loginPopup()"><img src="views/C2QB_green_btn_lg_default.png" width="178" /></a>
@@ -152,6 +164,12 @@ if (isset($_SESSION['sessionAccessToken'])) {
     <p>If there is no access token or the access token is invalid, click either the <b>Connect to QucikBooks</b> button above.</p>
     <pre id="refreshToken"></pre>
     <button  type="button" class="btn btn-success" onclick="apiCall.refreshToken()">refresh</button>
+
+    <h2>Post to Skyline</h2>
+    <p>If QBO API Call successful, post to Skyline Manager</p>
+    <pre id="postToDb"></pre>
+    <button  type="button" class="btn btn-success" onclick="apiCall.postToDb()">Post to Skyline</button>
+
 
     <hr />
 
