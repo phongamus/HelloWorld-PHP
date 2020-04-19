@@ -15,15 +15,22 @@ def lambda_handler(event, context):
     jsonStrPayload = event["body"]
     jsonPayload = json.loads(jsonStrPayload)
     if(checkValidJson(jsonPayload, checklist)):
-        print('success')
-    return event["body"]
+        result = postToTable(jsonPayload['QBORealmID'],jsonStrPayload, 'credentials', 'qboCredential', 'mid')
+        responseStatus = (result['ResponseMetadata']['HTTPStatusCode'])
+    else:
+        return 'something is missing'
+    if responseStatus == 200:
+        print("Table Updated Sucessfully")
+        return 'Table Updated Sucessfully'
+    else:
+        return 'something when wrong with updating table'
 
 
 def postToTable(primaryKey, jsonStrPayload, tableField, tableName, primaryKeyName):
     dynamodb = boto3.resource('dynamodb')
     table = dynamodb.Table(tableName)
     expression = "set "+tableField+" = :r"
-    table.update_item(
+    response = table.update_item(
         Key={
             primaryKeyName: primaryKey
         },
@@ -32,7 +39,9 @@ def postToTable(primaryKey, jsonStrPayload, tableField, tableName, primaryKeyNam
             ':r': jsonStrPayload,
         }
     )
-    print('posted the deal and ticketnum to Dynamo')
+    return response
+
+    print('posted item to table')
 
 def parseJson(jsonObj):
     pass
@@ -51,8 +60,7 @@ def checkValidJson(messageJsonAsDict, checklist):
         return True
 
 
-DEBUG = True
-if(DEBUG):
+if __name__ == "__main__":
     with open('samplePostToDb.json') as f:
         awsJsonBody = json.load(f)
     event = {}
