@@ -137,9 +137,8 @@ if (isset($_SESSION['sessionAccessToken'])) {
 
     <div class="well text-center">
 
-        <h1>QuickBooks HelloWorld sample application</h1>
-        <h2>Demonstrate Connect to QuickBooks flow and API Request</h2>
-
+        <h1>Skyline Payments</h1>
+        <h1>Quickbooks Online Connector</h1>
         <br>
 
     </div>
@@ -147,8 +146,8 @@ if (isset($_SESSION['sessionAccessToken'])) {
     <p>If there is no access token or the access token is invalid, click the <b>Connect to QuickBooks</b> button below.</p>
     <pre id="accessToken">
         <style="background-color:#efefef;overflow-x:scroll"><?php
-    // $displayString = isset($accessTokenJson) ? $accessTokenJson : "No Access Token Generated Yet";
-    $displayString = isset($accessTokenJson) ? print_r($_SESSION['sessionAccessToken']) : "No Access Token Generated Yet";
+    $displayString = isset($accessTokenJson) ? "QuickBooks Token Generated" : "No Access Token Generated Yet";
+    // $displayString = isset($accessTokenJson) ? print_r($_SESSION['sessionAccessToken']) : "No Access Token Generated Yet";
     echo json_encode($displayString, JSON_PRETTY_PRINT); ?>
     </pre>
     <a class="imgLink" href="#" onclick="oauth.loginPopup()"><img src="views/C2QB_green_btn_lg_default.png" width="178" /></a>
@@ -160,10 +159,10 @@ if (isset($_SESSION['sessionAccessToken'])) {
     <pre id="apiCall"></pre>
     <button  type="button" class="btn btn-success" onclick="apiCall.getCompanyInfo()">Get Company Info</button>
 
-    <h2>Refresh</h2>
+    <!-- <h2>Refresh</h2>
     <p>If there is no access token or the access token is invalid, click either the <b>Connect to QucikBooks</b> button above.</p>
     <pre id="refreshToken"></pre>
-    <button  type="button" class="btn btn-success" onclick="apiCall.refreshToken()">refresh</button>
+    <button  type="button" class="btn btn-success" onclick="apiCall.refreshToken()">refresh</button> -->
 
     <h2>Post to Skyline</h2>
     <p>If QBO API Call successful, post to Skyline Manager</p>
