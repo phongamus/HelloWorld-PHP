@@ -154,7 +154,7 @@ if (isset($_SESSION['sessionAccessToken'])) {
     // $displayString = isset($accessTokenJson) ? print_r($_SESSION['sessionAccessToken']) : "No Access Token Generated Yet";
     echo json_encode($displayString, JSON_PRETTY_PRINT); ?>
     </pre>
-    <a class="imgLink" href="#" onclick="oauth.loginPopup()"><img src="views/C2QB_green_btn_lg_default.png" width="178" /></a>
+    <a class="imgLink" href="#" onclick="oauth.loginPopup()"><img src="C2QB_green_btn_lg_default.png" width="178" /></a>
     <hr />
 
 
