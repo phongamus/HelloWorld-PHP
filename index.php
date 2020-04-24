@@ -131,17 +131,14 @@ if (isset($_SESSION['sessionAccessToken'])) {
 <div class="container">
 
     <h1>
-        <a href="http://developer.intuit.com">
-            <img src="skylinelogo.png" id="headerLogo">
-        </a>
-
+    <img src="skylinelogo.png" id="headerLogo">
     </h1>
 
     <hr>
 
     <div class="well text-center">
 
-        <h1>Skyline Payments</h1>
+        
         <h1>Quickbooks Online Connector</h1>
         <br>
 
@@ -171,6 +168,7 @@ if (isset($_SESSION['sessionAccessToken'])) {
     <h2>Post to Skyline</h2>
     <p>If QBO API Call successful, post to Skyline Manager</p>
     <pre id="postToDb"></pre>
+    <div class="btn">Skyline MID: </div>
     <input id="mid" type="text"  placeholder = "Insert MID"></input>
     <button  type="button" class="btn btn-success" onclick="apiCall.postToDb()">Post to Skyline</button>
 
