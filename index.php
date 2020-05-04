@@ -161,7 +161,7 @@ if (isset($_SESSION['sessionAccessToken'])) {
     <button  type="button" class="btn btn-success" onclick="apiCall.getCompanyInfo()">Get Company Info</button>
 
     <!-- <h2>Refresh</h2>
-    <p>If there is no access token or the access token is invalid, click either the <b>Connect to QucikBooks</b> button above.</p>
+    <p>refresh the token</p>
     <pre id="refreshToken"></pre>
     <button  type="button" class="btn btn-success" onclick="apiCall.refreshToken()">refresh</button> -->
 
