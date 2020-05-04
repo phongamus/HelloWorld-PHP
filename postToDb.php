@@ -12,7 +12,8 @@ session_start();
 function postToDb($mid)
 {
     $accessToken = $_SESSION['sessionAccessToken'];
-    $auth_server = 'https://fpzxkuf1lj.execute-api.us-east-1.amazonaws.com/';
+    // $auth_server = 'https://fpzxkuf1lj.execute-api.us-east-1.amazonaws.com/';
+    $auth_server = 'https://57g9kbpknl.execute-api.us-east-1.amazonaws.com/saveToken';
     // $auth_server = 'https://enb1oanvszux.x.pipedream.net';
     try{
         $client = new GuzzleHttp\Client();
