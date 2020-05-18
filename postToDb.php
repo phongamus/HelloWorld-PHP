@@ -3,13 +3,13 @@
 require_once(__DIR__ . '/vendor/autoload.php');
 use QuickBooksOnline\API\DataService\DataService;
 
+session_start();
+
 echo '<pre>';
 // print_r($_GET['mid']);
 $mid = $_GET['mid'];
 $paytraceApiUsername = $_GET['paytraceApiUsername'];
 $paytraceApiPassword = $_GET['paytraceApiPassword'];
-
-session_start();
 
 function postToDb($mid, $paytraceApiUsername, $paytraceApiPassword)
 {
