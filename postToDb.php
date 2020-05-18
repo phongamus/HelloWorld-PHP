@@ -6,6 +6,8 @@ use QuickBooksOnline\API\DataService\DataService;
 echo '<pre>';
 // print_r($_GET['mid']);
 $mid = $_GET['mid'];
+$paytraceApiUsername = $_GET['paytraceApiUsername'];
+$paytraceApiPassword = $_GET['paytraceApiPassword'];
 
 session_start();
 
@@ -21,7 +23,12 @@ function postToDb($mid)
                 'mid' => $mid,
                 'refreshTokenKey' => $accessToken->getRefreshToken(),
                 'QBORealmID' => $accessToken->getRealmID(),
-                'x_refresh_token_expires_in' => $accessToken->getRefreshTokenExpiresAt()
+                'x_refresh_token_expires_in' => $accessToken->getRefreshTokenExpiresAt(),
+                'gateway' => [
+                    'gatewayType' => 'paytrace',
+                    'apiUsername' => $paytraceApiUsername,
+                    'apiPassword' => $paytraceApiPassword
+                ]
 
                 ]
         ]);
