@@ -112,6 +112,8 @@ if (isset($_SESSION['sessionAccessToken'])) {
                 $paytraceApiUsername = $("#paytraceApiUsername").prop("value");
                 $paytraceApiPassword = $("#paytraceApiPassword").prop("value");
                 console.log("mid: " + $mid);
+                console.log("paytraceApiUsername: " + $paytraceApiUsername);
+                console.log("paytraceApiPassword: " + $paytraceApiPassword);
                 $.ajax({
                     type: "GET",
                     url: "postToDb.php",

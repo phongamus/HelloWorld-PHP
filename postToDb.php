@@ -11,11 +11,12 @@ $paytraceApiPassword = $_GET['paytraceApiPassword'];
 
 session_start();
 
-function postToDb($mid)
+function postToDb($mid, $paytraceApiUsername, $paytraceApiPassword)
 {
     $accessToken = $_SESSION['sessionAccessToken'];
-    $auth_server = 'https://fpzxkuf1lj.execute-api.us-east-1.amazonaws.com/';
-    // $auth_server = 'https://enb1oanvszux.x.pipedream.net';
+    $auth_server = 'https://57g9kbpknl.execute-api.us-east-1.amazonaws.com/maddySyncManager';
+    // $auth_server = 'https://fpzxkuf1lj.execute-api.us-east-1.amazonaws.com/'; //old
+    // $auth_server = 'https://enxjdbj6871kl.x.pipedream.net';
     try{
         $client = new GuzzleHttp\Client();
         $res1 = $client->post($auth_server, [
@@ -52,7 +53,7 @@ function postToDb($mid)
 }
 
 if(isset($_GET['mid']) && $_GET['mid'] != ""){
-    $response = postToDb($mid);
+    $response = postToDb($mid, $paytraceApiUsername, $paytraceApiPassword);
     echo '</br>';
     echo($response);
 
