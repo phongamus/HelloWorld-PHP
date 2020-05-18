@@ -174,8 +174,13 @@ if (isset($_SESSION['sessionAccessToken'])) {
     <pre id="postToDb"></pre>
     <div class="btn">Skyline MID: </div>
     <input id="mid" type="text"  placeholder = "Insert MID"></input>
+    </br>
+    <div class="btn">Paytrace API Username: </div>
     <input id="paytraceApiUsername" type="text"  placeholder = "Insert Paytrace API Username"></input>
+    </br>
+    <div class="btn">Paytrace API Password:</div>
     <input id="paytraceApiPassword" type="text"  placeholder = "Insert Paytrace API Password"></input>
+    </br>
     <button  type="button" class="btn btn-success" onclick="apiCall.postToDb()">Post to Skyline</button>
 
 
