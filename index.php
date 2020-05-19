@@ -109,12 +109,18 @@ if (isset($_SESSION['sessionAccessToken'])) {
 
             this.postToDb = function() {
                 $mid = $("#mid").prop("value");
+                $paytraceApiUsername = $("#paytraceApiUsername").prop("value");
+                $paytraceApiPassword = $("#paytraceApiPassword").prop("value");
                 console.log("mid: " + $mid);
+                console.log("paytraceApiUsername: " + $paytraceApiUsername);
+                console.log("paytraceApiPassword: " + $paytraceApiPassword);
                 $.ajax({
                     type: "GET",
                     url: "postToDb.php",
                     data: {
-                        mid: $mid
+                        mid: $mid,
+                        paytraceApiUsername: $paytraceApiUsername,
+                        paytraceApiPassword:  $paytraceApiPassword
                     },
                 }).done(function( msg ) {
                     $( '#postToDb' ).html( msg );
@@ -170,6 +176,13 @@ if (isset($_SESSION['sessionAccessToken'])) {
     <pre id="postToDb"></pre>
     <div class="btn">Skyline MID: </div>
     <input id="mid" type="text"  placeholder = "Insert MID"></input>
+    </br>
+    <div class="btn">Paytrace API Username: </div>
+    <input id="paytraceApiUsername" type="text"  placeholder = "Insert Paytrace API Username"></input>
+    </br>
+    <div class="btn">Paytrace API Password:</div>
+    <input id="paytraceApiPassword" type="text"  placeholder = "Insert Paytrace API Password"></input>
+    </br>
     <button  type="button" class="btn btn-success" onclick="apiCall.postToDb()">Post to Skyline</button>
 
 
