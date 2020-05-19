@@ -22,16 +22,17 @@ function postToDb($mid, $paytraceApiUsername, $paytraceApiPassword)
         $res1 = $client->post($auth_server, [
             'json' => [
                 'mid' => $mid,
-                'refreshTokenKey' => $accessToken->getRefreshToken(),
-                'QBORealmID' => $accessToken->getRealmID(),
-                'x_refresh_token_expires_in' => $accessToken->getRefreshTokenExpiresAt(),
-                'gateway' => [
+                'qboCredentials' => [
+                    'refreshTokenKey' => $accessToken->getRefreshToken(),
+                    'QBORealmID' => $accessToken->getRealmID(),
+                    'x_refresh_token_expires_in' => $accessToken->getRefreshTokenExpiresAt(),
+                ],
+                'gatewayCredentials' => [
                     'gatewayType' => 'paytrace',
                     'apiUsername' => $paytraceApiUsername,
                     'apiPassword' => $paytraceApiPassword
                 ]
-
-                ]
+            ]
         ]);
 
         // grab the results (as JSON)
