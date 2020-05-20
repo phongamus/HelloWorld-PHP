@@ -10,8 +10,9 @@ echo '<pre>';
 $mid = $_GET['mid'];
 $paytraceApiUsername = $_GET['paytraceApiUsername'];
 $paytraceApiPassword = $_GET['paytraceApiPassword'];
+$paytracePublicKey = $_GET['paytracePublicKey'];
 
-function postToDb($mid, $paytraceApiUsername, $paytraceApiPassword)
+function postToDb($mid, $paytraceApiUsername, $paytraceApiPassword, $paytracePublicKey)
 {
     $accessToken = $_SESSION['sessionAccessToken'];
     $auth_server = 'https://57g9kbpknl.execute-api.us-east-1.amazonaws.com/maddySyncManager';
@@ -30,7 +31,8 @@ function postToDb($mid, $paytraceApiUsername, $paytraceApiPassword)
                 'gatewayCredentials' => [
                     'gatewayType' => 'paytrace',
                     'apiUsername' => $paytraceApiUsername,
-                    'apiPassword' => $paytraceApiPassword
+                    'apiPassword' => $paytraceApiPassword,
+                    'publicKey' => $paytracePublicKey
                 ]
             ]
         ]);
@@ -54,7 +56,7 @@ function postToDb($mid, $paytraceApiUsername, $paytraceApiPassword)
 }
 
 if(isset($_GET['mid']) && $_GET['mid'] != ""){
-    $response = postToDb($mid, $paytraceApiUsername, $paytraceApiPassword);
+    $response = postToDb($mid, $paytraceApiUsername, $paytraceApiPassword, $paytracePublicKey);
     echo '</br>';
     echo($response);
 
